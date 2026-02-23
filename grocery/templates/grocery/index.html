@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grocery Bud</title>
+    <link rel="stylesheet" href="{% static 'grocery/css/global.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'grocery/css/global.css' %}" />
+<link rel="stylesheet" href="{% static 'grocery/css/form.css' %}" />
+<link rel="stylesheet" href="{% static 'grocery/css/items.css' %}" />
+<link rel="stylesheet" href="{% static 'grocery/css/single-item.css' %}" />
+</head>
+<body>
+    <section class="section-center">
+        <form class="grocery-form" method="POST" action="{% url 'grocery:add' %}">
+            {% csrf_token %}
+            <h3>Grocery Bud</h3>
+            <div class="form-control">
+                <input type="text" name="name" placeholder="e.g. eggs">
+                <button type="submit" class="submit-btn">Add</button>
+            </div>
+        </form>
+
+        <div class="grocery-container">
+            {% for item in items %}
+            <article class="grocery-item">
+                <p class="title">{{ item.name }}</p>
+                <div class="btn-container">
+                    <form action="{% url 'grocery:delete' item.id %}" method="POST" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="delete-btn"><i class="fas fa-trash"></i></button>
+                    </form>
+                </div>
+            </article>
+            {% empty %}
+            <p>No items in the list.</p>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>

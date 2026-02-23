@@ -1,0 +1,11 @@
+{
+  "emmet.includeLanguages": {
+    "django-html": "html"
+  },
+  "[html][django-html]": {
+    "editor.defaultFormatter": "monosans.djlint",
+    "editor.formatOnSave": true
+  },
+  "djlint.format.preserveBlankLines": true,
+  "djlint.format.indent": 2
+}
