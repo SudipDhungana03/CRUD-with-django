@@ -1,6 +1,5 @@
 from django.apps import AppConfig
 
-
 class GroceryConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'grocery'
+    name = 'grocery' # <--- This name must match your folder name exactly
