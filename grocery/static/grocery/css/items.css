@@ -1,30 +1,15 @@
-.items {
-  margin-top: 2rem;
-}
-
 .grocery-container {
-  visibility: visible;
-  margin-top: 2rem;
-  transition: all 0.3s linear;
+    margin-top: 2.5rem;
+    visibility: visible;
 }
 
-.clear-btn {
-  text-transform: capitalize;
-  width: 10rem;
-  height: 1.5rem;
-  display: grid;
-  align-items: center;
-  background: transparent;
-  border-color: transparent;
-  color: #bb2525;
-  margin: 0 auto;
-  font-size: 0.85rem;
-  letter-spacing: 0.1rem;
-  cursor: pointer;
-  transition: all 0.3s linear;
-  margin-top: 1.25rem;
+.grocery-list {
+    margin-bottom: 2rem;
 }
 
-.clear-btn:hover {
-  color: #e66b6b;
+.empty-text {
+    text-align: center;
+    color: var(--clr-grey-5);
+    letter-spacing: 0.1rem;
+    margin-top: 1rem;
 }
