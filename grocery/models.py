@@ -10,3 +10,5 @@ class GroceryItem(models.Model):
 
     class Meta:
         ordering = ['-created_at'] # Shows newest items first
+
+

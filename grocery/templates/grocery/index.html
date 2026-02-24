@@ -3,13 +3,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grocery Bud</title>
-    <link rel="stylesheet" href="{% static 'grocery/css/global.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="{% static 'grocery/css/global.css' %}" />
-<link rel="stylesheet" href="{% static 'grocery/css/form.css' %}" />
-<link rel="stylesheet" href="{% static 'grocery/css/items.css' %}" />
-<link rel="stylesheet" href="{% static 'grocery/css/single-item.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'grocery/css/style.css' %}">
 </head>
 <body>
     <section class="section-center">
@@ -17,25 +14,42 @@
             {% csrf_token %}
             <h3>Grocery Bud</h3>
             <div class="form-control">
-                <input type="text" name="name" placeholder="e.g. eggs">
-                <button type="submit" class="submit-btn">Add</button>
+                <input type="text" name="name" id="grocery" placeholder="e.g. eggs">
+                <button type="submit" class="submit-btn">Add Item</button>
             </div>
         </form>
 
         <div class="grocery-container">
-            {% for item in items %}
-            <article class="grocery-item">
-                <p class="title">{{ item.name }}</p>
-                <div class="btn-container">
-                    <form action="{% url 'grocery:delete' item.id %}" method="POST" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="delete-btn"><i class="fas fa-trash"></i></button>
-                    </form>
-                </div>
-            </article>
-            {% empty %}
-            <p>No items in the list.</p>
-            {% endfor %}
+            <div class="grocery-list">
+                {% for item in items %}
+                <article class="grocery-item">
+                    <div class="item-info">
+                        <a href="{% url 'grocery:toggle' item.id %}" class="check-icon">
+                            {% if item.completed %}
+                                <i class="fas fa-check-square checked"></i>
+                            {% else %}
+                                <i class="far fa-square"></i>
+                            {% endif %}
+                        </a>
+                        <p class="title {% if item.completed %}completed{% endif %}">{{ item.name }}</p>
+                    </div>
+                    
+                    <div class="btn-container">
+                        <a href="{% url 'grocery:edit' item.id %}" class="edit-btn">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <form action="{% url 'grocery:delete' item.id %}" method="POST" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="delete-btn">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
+                    </div>
+                </article>
+                {% empty %}
+                <p class="empty-text">No items in the list.</p>
+                {% endfor %}
+            </div>
         </div>
     </section>
 </body>
