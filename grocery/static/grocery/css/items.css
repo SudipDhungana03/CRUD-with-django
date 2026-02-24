@@ -1,15 +1,2 @@
-.grocery-container {
-    margin-top: 2.5rem;
-    visibility: visible;
-}
-
-.grocery-list {
-    margin-bottom: 2rem;
-}
-
-.empty-text {
-    text-align: center;
-    color: var(--clr-grey-5);
-    letter-spacing: 0.1rem;
-    margin-top: 1rem;
-}
+.grocery-container { margin-top: 2rem; }
+.empty-text { text-align: center; color: var(--clr-grey-5); }

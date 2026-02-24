@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Item - Grocery Bud</title>
+    <title>Edit Item</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="{% static 'grocery/css/global.css' %}">
     <link rel="stylesheet" href="{% static 'grocery/css/form.css' %}">
@@ -18,10 +18,9 @@
                 <input type="text" name="name" value="{{ item.name }}" required autofocus>
                 <button type="submit" class="submit-btn">Save</button>
             </div>
-            
             <div style="text-align: center; margin-top: 1.5rem;">
                 <a href="{% url 'grocery:index' %}" style="color: var(--clr-grey-5); text-decoration: none; font-size: 0.9rem;">
-                    <i class="fas fa-arrow-left"></i> Cancel and Go Back
+                    <i class="fas fa-arrow-left"></i> Back to List
                 </a>
             </div>
         </form>
